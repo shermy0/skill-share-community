@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfilController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +20,10 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
-Route::view('/dashboard', 'dashboard')
+Route::view('/dashboard', 'jasa.dashboard')
     ->middleware('auth')
-    ->name('dashboard');
+    ->name('jasa.dashboard');
+    Route::middleware('auth')->group(function () {
+   Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+
+});
