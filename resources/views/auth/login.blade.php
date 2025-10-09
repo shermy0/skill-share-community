@@ -1,8 +1,4 @@
-@extends('layouts.app')
 
-@section('title', 'Login')
-
-@section('content')
     <div class="card">
         <h1>Login</h1>
         <p>Please enter your credentials to continue.</p>
@@ -47,4 +43,3 @@
             Need an account? <a href="{{ route('register') }}">Register</a>
         </p>
     </div>
-@endsection

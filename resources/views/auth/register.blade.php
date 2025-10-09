@@ -1,8 +1,4 @@
-@extends('layouts.app')
 
-@section('title', 'Register')
-
-@section('content')
     <div class="card">
         <h1>Create an account</h1>
         <p>Join Skill Share Community to connect and learn together.</p>
@@ -59,4 +55,4 @@
             Already have an account? <a href="{{ route('login') }}">Login</a>
         </p>
     </div>
-@endsection
+

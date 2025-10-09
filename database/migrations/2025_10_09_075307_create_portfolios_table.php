@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Provider
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
             $table->string('title');
-            $table->text('description');
-            $table->decimal('price', 10, 2);
-            $table->float('rating_average')->default(0);
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('project_link')->nullable();
+            $table->decimal('price', 10, 2)->nullable(); // bisa kosong kalau proyek pribadi
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('portfolios');
     }
 };
