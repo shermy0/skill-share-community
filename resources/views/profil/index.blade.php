@@ -11,7 +11,7 @@
                 <div class="card-body p-4">
                     <div class="row align-items-center">
                         <div class="col-md-2 text-center">
-                            <img src="https://ui-avatars.com/api/?name=Ahmad+Rizki&size=150&background=41A67E&color=fff" 
+                            <img src="https://ui-avatars.com/api/?name=Ahmad+Rizki&size=150&background=41A67E&color=fff"
                                  class="rounded-circle mb-3" width="120" height="120" alt="Profile">
                             <button class="btn btn-sm" style="background-color: var(--primary-green); color: white;">
                                 <i class="fas fa-camera me-1"></i> Ubah Foto
@@ -76,7 +76,7 @@
                 </div>
                 <div class="card-body">
                     <p class="mb-3">Halo! Saya Ahmad Rizki, seorang profesional dengan pengalaman 5+ tahun di bidang teknologi dan pendidikan. Saya passionate dalam membantu orang lain mengembangkan skill mereka.</p>
-                    
+
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="info-item p-3" style="background-color: #F5F7F6; border-radius: 8px;">
@@ -426,6 +426,75 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <strong>UI/UX Design Mobile App</strong><br>
+                                        <small class="text-muted">High Fidelity, Prototype, Design System</small>
+                                    </td>
+                                    <td><span class="badge" style="background-color: #3B82F6;">UI/UX Design</span></td>
+                                    <td><strong>Rp 2.000.000</strong></td>
+                                    <td><span class="badge bg-success">Aktif</span></td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Detail</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Edit</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-toggle-on me-2"></i>Nonaktifkan</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Hapus</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Les Privat Matematika</strong><br>
+                                        <small class="text-muted">SD, SMP, SMA - Tatap Muka / Online</small>
+                                    </td>
+                                    <td><span class="badge" style="background-color: #F59E0B;">Pendidikan</span></td>
+                                    <td><strong>Rp 100.000/jam</strong></td>
+                                    <td><span class="badge bg-success">Aktif</span></td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Detail</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Edit</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-toggle-on me-2"></i>Nonaktifkan</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Hapus</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Fotografi Wedding</strong><br>
+                                        <small class="text-muted">Full Day Coverage + Editing</small>
+                                    </td>
+                                    <td><span class="badge" style="background-color: #8B5CF6;">Fotografi</span></td>
+                                    <td><strong>Rp 5.000.000</strong></td>
+                                    <td><span class="badge bg-warning">Tidak Aktif</span></td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Detail</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Edit</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-toggle-off me-2"></i>Aktifkan</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Hapus</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -660,137 +729,68 @@
         transition: all 0.3s ease;
         overflow: hidden;
     }
-    
+
     .portfolio-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
     }
-    
+
     .portfolio-card img {
         transition: all 0.3s ease;
     }
-    
+
     .portfolio-card:hover img {
         transform: scale(1.05);
     }
-    
+
     .skill-card {
         transition: all 0.3s ease;
     }
-    
+
     .skill-card:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         transform: translateY(-3px);
     }
-    
+
     .nav-tabs .nav-link {
         color: var(--text-dark);
         border: none;
         border-bottom: 3px solid transparent;
         font-weight: 500;
     }
-    
+
     .nav-tabs .nav-link:hover {
         border-bottom-color: var(--light-green);
         color: var(--primary-green);
     }
-    
+
     .nav-tabs .nav-link.active {
         color: var(--primary-green);
         background-color: transparent;
         border-bottom-color: var(--primary-green);
     }
-    
+
     .info-item {
         transition: all 0.3s ease;
     }
-    
+
     .info-item:hover {
         background-color: #E8F1ED !important;
         transform: translateY(-2px);
     }
-    
+
     .table tbody tr {
         vertical-align: middle;
     }
-    
+
     .modal-header {
         border-bottom: none;
     }
-    
+
     .modal-footer {
         border-top: 1px solid var(--border-color);
     }
 </style>
 @endsection
 
-@endsection</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Edit</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-toggle-on me-2"></i>Nonaktifkan</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-                                                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Hapus</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>UI/UX Design Mobile App</strong><br>
-                                        <small class="text-muted">High Fidelity, Prototype, Design System</small>
-                                    </td>
-                                    <td><span class="badge" style="background-color: #3B82F6;">UI/UX Design</span></td>
-                                    <td><strong>Rp 2.000.000</strong></td>
-                                    <td><span class="badge bg-success">Aktif</span></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Detail</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Edit</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-toggle-on me-2"></i>Nonaktifkan</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-                                                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Hapus</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Les Privat Matematika</strong><br>
-                                        <small class="text-muted">SD, SMP, SMA - Tatap Muka / Online</small>
-                                    </td>
-                                    <td><span class="badge" style="background-color: #F59E0B;">Pendidikan</span></td>
-                                    <td><strong>Rp 100.000/jam</strong></td>
-                                    <td><span class="badge bg-success">Aktif</span></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Detail</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Edit</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-toggle-on me-2"></i>Nonaktifkan</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-                                                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Hapus</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Fotografi Wedding</strong><br>
-                                        <small class="text-muted">Full Day Coverage + Editing</small>
-                                    </td>
-                                    <td><span class="badge" style="background-color: #8B5CF6;">Fotografi</span></td>
-                                    <td><strong>Rp 5.000.000</strong></td>
-                                    <td><span class="badge bg-warning">Tidak Aktif</span></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Detail
+@endsection

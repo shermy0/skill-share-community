@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - SkillShare Komunitas</title>
-
-    <!-- Font Poppins -->
+    <title>@yield('title', 'SkillShare') - SkillShare Komunitas</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdY2kvHn+1hp+7Z9N5LaOFb3gez1BDY6E8wGZ1SJ8uy7UFp3p3lAKem8B5wBn4E7YBxZAP7rGw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --primary-green: #41A67E;
@@ -22,7 +14,6 @@
             --sidebar-bg: #F5F7F6;
             --text-dark: #2E3A35;
             --light-bg: #FAFBFB;
-            --accent: #6FC3A4;
             --white: #ffffff;
             --border-color: #E5E9E8;
         }
@@ -38,329 +29,198 @@
             overflow-x: hidden;
         }
 
-        /* Sidebar */
-        .sidebar {
-            height: 100vh;
-            width: 260px;
+        header {
             background-color: var(--white);
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 25px 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 32px;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
-            border-right: 1px solid var(--border-color);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.03);
-            z-index: 1000;
-            overflow-y: auto;
-            transition: all 0.3s ease;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1020;
         }
 
-        .sidebar.collapsed {
-            width: 80px;
-        }
-
-        .sidebar h4 {
-            text-align: center;
-            font-weight: 600;
+        .brand {
+            font-weight: 700;
+            font-size: 20px;
             color: var(--primary-green);
-            margin-bottom: 30px;
-            font-size: 1.4rem;
-            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
-        .sidebar.collapsed h4 {
-            font-size: 1.2rem;
+        .auth-links a,
+        .auth-links form button {
+            font-weight: 500;
+            margin-left: 16px;
         }
 
-        .sidebar .menu-text {
-            transition: all 0.3s ease;
+        .auth-links form {
+            display: inline;
         }
 
-        .sidebar.collapsed .menu-text {
-            display: none;
-        }
-
-        .toggle-sidebar {
+        .auth-links button {
             background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-dark);
-            padding: 8px 12px;
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 6px 14px;
             border-radius: 8px;
             cursor: pointer;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 1.2rem;
             transition: all 0.2s ease;
-            width: 100%;
         }
 
-        .toggle-sidebar:hover {
-            background-color: var(--sidebar-bg);
-            color: var(--primary-green);
-        }
-
-        .sidebar a {
-            color: var(--text-dark);
-            text-decoration: none;
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            font-size: 0.95rem;
-        }
-
-        .sidebar a i {
-            margin-right: 12px;
-            font-size: 1.1rem;
-            min-width: 20px;
-        }
-
-        .sidebar.collapsed a {
-            justify-content: center;
-            padding: 12px 10px;
-        }
-
-        .sidebar.collapsed a i {
-            margin-right: 0;
-        }
-
-        .sidebar a:hover {
-            background-color: var(--sidebar-bg);
-            color: var(--primary-green);
-        }
-
-        .sidebar a.active {
+        .auth-links button:hover {
             background-color: var(--primary-green);
             color: var(--white);
         }
 
-        .sidebar .logout {
-            background-color: #f8f9fa;
-            color: var(--text-dark);
-            text-align: center;
-            justify-content: center;
-            margin-top: 20px;
-            border: 1px solid var(--border-color);
+        .layout {
+            display: flex;
+            min-height: calc(100vh - 70px);
         }
 
-        .sidebar .logout:hover {
-            background-color: #fee;
-            color: #dc3545;
-            border-color: #dc3545;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 260px;
-            padding: 30px;
-            min-height: 100vh;
-            transition: all 0.3s ease;
-        }
-
-        .main-content.expanded {
-            margin-left: 80px;
-        }
-
-        .header {
+        .sidebar {
+            width: 260px;
             background-color: var(--white);
-            color: var(--text-dark);
-            padding: 20px 25px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            border-left: 4px solid var(--primary-green);
+            border-right: 1px solid var(--border-color);
+            padding: 28px 20px;
         }
 
-        .header h4 {
-            margin: 0;
+        .sidebar .menu-title {
+            text-transform: uppercase;
+            font-size: 13px;
             font-weight: 600;
-            font-size: 1.4rem;
+            color: #94A3B8;
+            margin-bottom: 18px;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-link-menu {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
             color: var(--text-dark);
-        }
-
-        /* Card Styling */
-        .card {
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
-            background-color: var(--white);
-        }
-
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .card-header {
-            background-color: var(--white);
-            color: var(--text-dark);
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            font-weight: 600;
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* Table */
-        .table {
-            color: var(--text-dark);
-        }
-
-        .table thead {
-            background-color: var(--sidebar-bg);
-        }
-
-        .table thead th {
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .table tbody tr {
-            transition: all 0.2s ease;
-        }
-
-        .table tbody tr:hover {
-            background-color: #FAFBFB;
-        }
-
-        /* Badge */
-        .badge {
-            padding: 6px 12px;
-            font-weight: 500;
-            font-size: 0.85rem;
-        }
-
-        /* Button */
-        .btn {
-            font-weight: 500;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            border: none;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-        }
-
-        /* Alert */
-        .alert {
+            padding: 12px 16px;
             border-radius: 10px;
-            border: none;
+            margin-bottom: 8px;
             font-weight: 500;
+            transition: background 0.2s ease, color 0.2s ease;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        .nav-link-menu i {
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-link-menu:hover,
+        .nav-link-menu.active {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .content-auth {
+            flex: 1;
+            padding: 32px;
+        }
+
+        .content-guest {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 48px 16px;
+        }
+
+        .guest-wrapper {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        @media (max-width: 992px) {
+            .layout {
+                flex-direction: column;
+            }
+
             .sidebar {
                 width: 100%;
-                height: auto;
-                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
             }
 
-            .sidebar.collapsed {
-                width: 100%;
+            .nav-link-menu {
+                flex: 1 1 calc(50% - 16px);
             }
 
-            .main-content {
-                margin-left: 0;
-                padding: 20px;
-            }
-
-            .main-content.expanded {
-                margin-left: 0;
-            }
-
-            .header h4 {
-                font-size: 1.2rem;
+            .content-auth {
+                padding: 24px 16px;
             }
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--light-bg);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #d1d5db;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #9ca3af;
-        }
-
-        @yield('styles')
     </style>
+    @stack('styles')
 </head>
-
 <body>
+    @php
+        $routeName = Route::currentRouteName();
+        $isGuestPage = in_array($routeName, ['login', 'register']);
+    @endphp
 
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div>
-            <button class="toggle-sidebar" id="toggleSidebar">
-                <i class="fas fa-bars"></i>
-            </button>
-            <h4 class="menu-text">🌿 SkillShare</h4>
-            <a href="#" class="active">
-                <i class="fas fa-home"></i>
-                <span class="menu-text">Dashboard</span>
-            </a>
-            <a href="{{ route('profil.index') }}">
-                <i class="fas fa-user"></i>
-                <span class="menu-text">Profil</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-inbox"></i>
-                <span class="menu-text">Pesanan Masuk</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-comments"></i>
-                <span class="menu-text">Chat</span>
-            </a>
+    <header>
+        <a href="{{ route('home') }}" class="brand">SkillShare</a>
+        <div class="auth-links">
+            @auth
+                <span class="text-muted me-2">Hai, {{ auth()->user()->name }}</span>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('register') }}">Register</a>
+            @endauth
         </div>
-        <a href="#" class="logout">
-            <i class="fas fa-sign-out-alt"></i>
-            <span class="menu-text">Logout</span>
-        </a>
+    </header>
+
+    <div class="layout">
+        @unless ($isGuestPage)
+            <aside class="sidebar">
+                <div class="menu-title">Menu</div>
+                <nav class="d-flex flex-column">
+                    <a href="{{ route('dashboard') }}" class="nav-link-menu {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                        <i class="fas fa-gauge"></i> Dashboard
+                    </a>
+                    <a href="{{ route('profile.index') }}" class="nav-link-menu {{ request()->routeIs('profile.index') ? 'active' : '' }}">
+                        <i class="fas fa-user-circle"></i> Profil
+                    </a>
+                    <a href="{{ route('orders.index') }}" class="nav-link-menu {{ request()->routeIs('orders.index') ? 'active' : '' }}">
+                        <i class="fas fa-inbox"></i> Pesanan Masuk
+                    </a>
+                    <a href="{{ route('chat.index') }}" class="nav-link-menu {{ request()->routeIs('chat.index') ? 'active' : '' }}">
+                        <i class="fas fa-comments"></i> Chat
+                    </a>
+                </nav>
+                @auth
+                    <form action="{{ route('logout') }}" method="POST" class="mt-auto pt-3">
+                        @csrf
+                        <button type="submit" class="btn w-100 d-flex align-items-center justify-content-center gap-2"
+                                style="background-color: var(--primary-green); color: var(--white);">
+                            <i class="fas fa-sign-out-alt"></i> Keluar
+                        </button>
+                    </form>
+                @endauth
+            </aside>
+        @endunless
+
+        <main class="{{ $isGuestPage ? 'content-guest' : 'content-auth' }}">
+            <div class="{{ $isGuestPage ? 'guest-wrapper' : '' }}">
+                @yield('content')
+            </div>
+        </main>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content" id="mainContent">
-        <div class="header">
-            <h4>@yield('title')</h4>
-        </div>
-
-        @yield('content')
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Toggle Sidebar
-        const toggleBtn = document.getElementById('toggleSidebar');
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('mainContent');
-
-        toggleBtn.addEventListener('click', function() {
-            sidebar.classList.toggle('collapsed');
-            mainContent.classList.toggle('expanded');
-        });
-    </script>
-
-    @yield('scripts')
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    @stack('scripts')
 </body>
-
 </html>
