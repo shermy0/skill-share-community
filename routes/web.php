@@ -14,6 +14,10 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('register
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::view('/favorit', 'client.favorites')->name('favorites.index');
+Route::view('/pesanan-saya', 'client.myorders')->name('myorders.index');
+
+
 Route::middleware('auth')->group(function () {
     Route::view('/dashboard', 'jasa.dashboard')->name('dashboard');
     Route::get('/profil', [ProfilController::class, 'index'])->name('profile.index');

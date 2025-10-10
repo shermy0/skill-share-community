@@ -15,12 +15,26 @@
 <body>
     @php
         $currentRoute = Route::currentRouteName();
-        $menuItems = [
-            ['label' => 'Dashboard', 'icon' => 'fas fa-home', 'route' => 'dashboard'],
-            ['label' => 'Profil', 'icon' => 'fas fa-user', 'route' => 'profile.index'],
-            ['label' => 'Pesanan Masuk', 'icon' => 'fas fa-inbox', 'route' => 'orders.index'],
-            ['label' => 'Chat', 'icon' => 'fas fa-comments', 'route' => 'chat.index'],
-        ];
+        $user = Auth::user();
+
+        if ($user && $user->role === 'provider') {
+            $menuItems = [
+                ['label' => 'Profil & Portofolio', 'icon' => 'fas fa-user', 'route' => 'profile.index'],
+                ['label' => 'Dashboard Provider', 'icon' => 'fas fa-home', 'route' => 'dashboard'],
+                ['label' => 'Chat', 'icon' => 'fas fa-comments', 'route' => 'chat.index'],
+                ['label' => 'Pesanan Masuk', 'icon' => 'fas fa-inbox', 'route' => 'orders.index'],
+            ];
+        } elseif ($user && $user->role === 'client') {
+            $menuItems = [
+                ['label' => 'Profil', 'icon' => 'fas fa-user', 'route' => 'profile.index'],
+                ['label' => 'Beranda', 'icon' => 'fas fa-home', 'route' => 'dashboard'],
+                ['label' => 'Favorit', 'icon' => 'fas fa-heart', 'route' => 'favorites.index'],
+                ['label' => 'Chat', 'icon' => 'fas fa-comments', 'route' => 'chat.index'],
+                ['label' => 'Pesanan Saya', 'icon' => 'fas fa-box', 'route' => 'myorders.index'],
+            ];
+        } else {
+            $menuItems = [];
+        }
     @endphp
 
     <aside class="sidebar" id="sidebar">
@@ -35,16 +49,16 @@
                 </button>
             </div>
 
-@auth
-<div class="text-center mb-3 user-info">
-    <img src="{{ Auth::user()->profile_photo ?? asset('default-avatar.png') }}" 
-         alt="Foto Profil" class="rounded-circle mb-2 profile-photo" width="70" height="70">
-    <div class="user-meta">
-        <h6 class="mb-0">{{ Auth::user()->name }}</h6>
-        <small class="text-muted text-capitalize">{{ Auth::user()->role }}</small>
-    </div>
-</div>
-@endauth
+            @auth
+            <div class="text-center mb-3 user-info">
+                <img src="{{ Auth::user()->profile_photo ?? asset('default-avatar.png') }}" 
+                    alt="Foto Profil" class="rounded-circle mb-2 profile-photo" width="70" height="70">
+                <div class="user-meta">
+                    <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                    <small class="text-muted text-capitalize">{{ Auth::user()->role }}</small>
+                </div>
+            </div>
+            @endauth
 
             <div>
                 <nav class="menu-list">
@@ -100,7 +114,6 @@
             });
         }
 
-        // Tooltip aktif saat hover di sidebar collapsed
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
         const tooltipList = [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
 
